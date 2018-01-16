@@ -1,5 +1,7 @@
 var currentDisplay ="";
 var operator = null;
+var firstNumber = null;
+var secondNumber = null;
 var button0 = document.getElementById('btn0');
 var button1 = document.getElementById('btn1');
 var buttonClr = document.getElementById('btnClr');
@@ -27,12 +29,15 @@ buttonClr.onclick = function() {
 }
 
 buttonEql.onclick = function() {
-    currentDisplay=currentDisplay+"1";
+    secondNumber=parseInt(currentDisplay.slice(firstNumber.toString().length+1));
+    currentDisplay=eval(firstNumber+secondNumber);
     document.getElementById('res').innerHTML=currentDisplay;
+    operator=null;    
 }
 
 buttonSum.onclick = function() {
     if(currentDisplay!=="" && !operator) {
+        firstNumber=parseInt(currentDisplay);
         currentDisplay=currentDisplay+"+";
         operator = "add";
         document.getElementById('res').innerHTML=currentDisplay;
@@ -41,6 +46,7 @@ buttonSum.onclick = function() {
 
 buttonSub.onclick = function() {
     if(currentDisplay!=="" && !operator) {
+        firstNumber=parseInt(currentDisplay);
         currentDisplay=currentDisplay+"+";
         operator = "subtract";
         document.getElementById('res').innerHTML=currentDisplay;
@@ -49,6 +55,7 @@ buttonSub.onclick = function() {
 
 buttonMul.onclick = function() {
     if(currentDisplay!=="" && !operator) {
+        firstNumber=parseInt(currentDisplay);
         currentDisplay=currentDisplay+"+";
         operator = "multiply";
         document.getElementById('res').innerHTML=currentDisplay;
@@ -57,6 +64,7 @@ buttonMul.onclick = function() {
 
 buttonDiv.onclick = function() {
     if(currentDisplay!=="" && !operator) {
+        firstNumber=parseInt(currentDisplay);
         currentDisplay=currentDisplay+"+";
         operator = "divide";
         document.getElementById('res').innerHTML=currentDisplay;
